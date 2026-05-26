@@ -1,0 +1,9 @@
+{
+  "temperatureC": 22.4,
+  "voltageV": 48.1,
+  "powerW": 315.7,
+  "hfPingRateHz": 12.0,
+  "lfPingRateHz": 4.0,
+  "triggerRateHz": 1.0,
+  "timestamp": "2026-05-26T14:32:10Z"
+}
