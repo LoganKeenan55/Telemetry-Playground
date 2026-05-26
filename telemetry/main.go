@@ -99,7 +99,7 @@ func main() {
 	// /data for request/repsonse, /events for open connection
 	http.HandleFunc("/events", eventsHandler)
 
-	http.Handle("/", http.FileServer(http.Dir(".")))
+	http.Handle("/", http.FileServer(http.Dir("static")))
 	
 	err := http.ListenAndServe(":8080", nil)
 
