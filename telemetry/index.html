@@ -1,26 +1,15 @@
 <script>
+const events = new EventSource("/events");
 
-function loadTelemetry(){
-fetch("http://localhost:8080/data")
-.then(response => response.json())
-.then(data => {
+events.onmessage = function (event) {
+  console.log("RAW:", event.data);
 
-    //clear each time
-    document.body.innerHTML = ""
-
-    for(const key in data){
-        document.body.innerHTML += `<p>${key}: ${data[key]}</p>`
-    }
-
-
-})
-}
-loadTelemetry()
-
-setInterval(loadTelemetry, 1000)
-
+  const telemetry = JSON.parse(event.data);
+  document.body.innerHTML = `
+    <pre>${JSON.stringify(telemetry, null, 2)}</pre>
+  `;
+};
 </script>
-
 
 </body>
 </html>
