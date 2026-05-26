@@ -1,0 +1,18 @@
+<script>
+
+fetch("http://localhost:8080/data")
+.then(response => response.json())
+.then(data => {
+    for(const key in data){
+        document.body.innerHTML += `<p>${key}: ${data[key]}</p>`
+    }
+
+
+})
+
+
+</script>
+
+
+</body>
+</html>
