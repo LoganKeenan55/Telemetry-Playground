@@ -80,25 +80,26 @@ function addPointToChart(array, value){
     array.push(value);
     if(array.length > MAX_POINTS){
         array.shift();
+        
     }
 }
 
 
 function updateCharts(data){
-    //x axis will just be numbers 0 -> max
-    const labels = temperatureData.map((val,i) => i);
+    //x axis will just be numbers 1 -> max
+    const labels = temperatureData.map((val,i) => i+1);
 
     temperatureChart.data.labels = labels;
     temperatureChart.data.datasets[0].data = temperatureData;
-    temperatureChart.update(data);
+    temperatureChart.update("none");
 
     voltageChart.data.labels = labels;
     voltageChart.data.datasets[0].data = voltageData;
-    voltageChart.update(data);
+    voltageChart.update("none");
 
     powerChart.data.labels = labels;
     powerChart.data.datasets[0].data = powerData;
-    powerChart.update(data);
+    powerChart.update("none");
 }
 
 
