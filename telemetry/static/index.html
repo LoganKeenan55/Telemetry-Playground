@@ -1,16 +1,24 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
 <html>
 <head>
 <title> Telemetry Playground</title>
 </head>
 
-</body>
-
 <h1>Live Data:</h1>
 <div id = "dashboard"></div>
 
-<script src = "app.js"></script>
+<h2>Temperature:</h2>
+<canvas id = "temperatureChart"></canvas>
 
+<h2>Voltage:</h2>
+<canvas id = "voltageChart"></canvas>
+
+<h2>Power:</h2>
+<canvas id = "powerChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src = "app.js"></script>
 </body>
 
 </html>
