@@ -1,5 +1,8 @@
 Real time telemetry visualizer built with Go and a browser frontend. It generates fake sensor data and streams it to the client using SSE which is then plotted with chart.js.
 
+<img width="2879" height="1799" alt="image" src="https://github.com/user-attachments/assets/f5be6f4c-777d-4cd2-a85f-5a36db5e8e0f" />
+
+
 ## How to run
 - go run .
 - http://localhost:8080
@@ -25,3 +28,7 @@ Real time telemetry visualizer built with Go and a browser frontend. It generate
 3. SSE endpoint (`/events`) streams updates to the browser
 4. Frontend updates DOM + charts in real time
 5. Control panel sends config updates to `/config`
+
+
+"Power Spike Mode":
+<img width="2879" height="1799" alt="image" src="https://github.com/user-attachments/assets/2117960e-e168-47d2-a9d3-48b46623e1bd" />
