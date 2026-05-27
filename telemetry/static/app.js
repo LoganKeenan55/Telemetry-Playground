@@ -140,5 +140,39 @@ events.onmessage = function (event) {
     addPointToChart(powerData,data.powerW);
 
 
-    updateCharts(data);
+    updateCharts();
 };
+
+
+function setTelemetryRate(newVal){
+  fetch("/config",{
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({telemetryRate:newVal})
+
+  });
+}
+
+function setNoiseLevel(newVal){
+  fetch("/config",{
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({noiseLevel:newVal})
+
+  });
+}
+
+function setScenario(newVal){
+  fetch("/config",{
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({scenario:newVal})
+
+  });
+}

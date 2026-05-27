@@ -115,7 +115,37 @@ func eventsHandler(w http.ResponseWriter, r *http.Request){
 
 }
 
+//runs when request arrives at config
+func configHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
 
+	var updates map[string]interface{}
+
+	err := json.NewDecoder(r.Body).Decode(&updates)
+	if err != nil {
+		http.Error(w, "bad JSON", http.StatusBadRequest)
+		return
+	}
+
+	if val, ok := updates["telemetryRate"]; ok {
+		currentConfig.TelemetryRate = int(val.(float64))
+	}
+
+	if val, ok := updates["noiseLevel"]; ok {
+		currentConfig.NoiseLevel = NoiseLevel(val.(string))
+	}
+
+	if val, ok := updates["scenario"]; ok {
+		currentConfig.Scenario = Scenario(val.(string))
+	}
+
+	fmt.Println("updated config:", currentConfig)
+
+	w.WriteHeader(http.StatusOK)
+}
 
 func main() {
 	//make goroutine that runs in background
@@ -131,7 +161,7 @@ func main() {
 	// "/data" for request/repsonse
 	// "/events" for open connection
 	http.HandleFunc("/events", eventsHandler)
-
+	http.HandleFunc("/config", configHandler)
 	//gets server frontend files
 	http.Handle("/", http.FileServer(http.Dir("static")))
 	
