@@ -14,7 +14,35 @@ import (
 
 var filePath string = "payload.json"
 
+type NoiseLevel string
+const(
+	low NoiseLevel = "low" 
+	medium NoiseLevel = "medium" 
+	high NoiseLevel = "high"
+)
 
+type Scenario string
+const(
+	normal Scenario = "normal"
+	warmup Scenario = "warmup"
+	powerSpike Scenario = "powerSpike"
+	triggerDropout Scenario = "triggerDropout"
+
+)
+
+type Config struct {
+	TelemetryRate int `json:"telemetryRate"`
+	NoiseLevel NoiseLevel `json:"noiseLevel"`
+	Scenario Scenario `json:"scenario"`
+}
+
+var currentConfig = Config{
+	TelemetryRate: 5,
+	NoiseLevel: low,
+	Scenario: normal,
+}
+
+/*
 //browser askes, server responds, stop
 func handler(w http.ResponseWriter, r *http.Request){
 	//content = byte[], error = error
@@ -37,6 +65,7 @@ func handler(w http.ResponseWriter, r *http.Request){
 	json.NewEncoder(w).Encode(payload);
 	
 }
+*/
 
 //browser connects, connection stays open
 //w lets you send info back to request
@@ -79,7 +108,8 @@ func eventsHandler(w http.ResponseWriter, r *http.Request){
 		//forces data out asap
 		flusher.Flush();
 
-		time.Sleep(1*time.Second);
+		//telemetry rate needs to be duration to divide by duration
+		time.Sleep(time.Second/time.Duration(currentConfig.TelemetryRate));
 	}
 
 
@@ -94,7 +124,7 @@ func main() {
 	go func(){
 		for{
 			writeTelemetryToFile();
-			time.Sleep(1*time.Second);
+			time.Sleep(time.Second/time.Duration(currentConfig.TelemetryRate));
 		}
 	}()
 
