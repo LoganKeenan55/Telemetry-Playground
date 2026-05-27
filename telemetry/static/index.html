@@ -8,47 +8,59 @@
 
 <body>
 
-<h1>Live Data:</h1>
+<div class="page">
 
-<div id="dashboard"></div>
+    <div class="top">
+        <h1>Live Data:</h1>
+        <div id="dashboard"></div>
+    </div>
 
-<div class="chart-container">
-  <canvas id="temperatureChart"></canvas>
-</div>
+    <div class="bottom">
 
-<div class="chart-container">
-  <canvas id="voltageChart"></canvas>
-</div>
 
-<div class="chart-container">
-  <canvas id="powerChart"></canvas>
-</div>
+        <div class="left-col">
+            <div class="chart-container">
+                <canvas id="temperatureChart"></canvas>
+            </div>
 
-<h2>Control Panel</h2>
+            <div class="chart-container">
+                <canvas id="voltageChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="powerChart"></canvas>
+            </div>
 
-<div id="controlPanel">
+        </div>
 
-  <div class="panel-section">
-    <h3>Telemetry Rate</h3>
-    <button onclick="setTelemetryRate(1)">1 Hz</button>
-    <button onclick="setTelemetryRate(5)">5 Hz</button>
-    <button onclick="setTelemetryRate(10)">10 Hz</button>
-  </div>
+        <div class="right-col">
 
-  <div class="panel-section">
-    <h3>Noise Level</h3>
-    <button onclick="setNoiseLevel('low')">Low</button>
-    <button onclick="setNoiseLevel('medium')">Medium</button>
-    <button onclick="setNoiseLevel('high')">High</button>
-  </div>
+            <h2>Control Panel</h2>
 
-  <div class="panel-section">
-    <h3>Scenario</h3>
-    <button onclick="setScenario('normal')">Normal</button>
-    <button onclick="setScenario('warmup')">Warmup</button>
-    <button onclick="setScenario('powerSpike')">Power Spike</button>
-    <button onclick="setScenario('triggerDropout')">Trigger Dropout</button>
-  </div>
+            <div id="controlPanel">
+                <div class="panel-section">
+                    <h3>Telemetry Rate</h3>
+                    <button onclick="setTelemetryRate(1)">1 Hz</button>
+                    <button onclick="setTelemetryRate(5)">5 Hz</button>
+                    <button onclick="setTelemetryRate(10)">10 Hz</button>
+                </div>
+
+                <div class="panel-section">
+                    <h3>Noise Level</h3>
+                    <button onclick="setNoiseLevel('low')">Low</button>
+                    <button onclick="setNoiseLevel('medium')">Medium</button>
+                    <button onclick="setNoiseLevel('high')">High</button>
+                </div>
+                <div class="panel-section">
+                    <h3>Scenario</h3>
+                    <button onclick="setScenario('normal')">Normal</button>
+                    <button onclick="setScenario('warmup')">Warmup</button>
+                    <button onclick="setScenario('powerSpike')">Power Spike</button>
+                    <button onclick="setScenario('triggerDropout')">Trigger Dropout</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </div>
 
