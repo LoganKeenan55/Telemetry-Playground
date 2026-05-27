@@ -1,3 +1,27 @@
 h1 {
   color: red;
 }
+
+.chart-container {
+    width: 500px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+#controlPanel {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.panel-section {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+}
+
+.panel-section button {
+    display: block;
+    margin: 5px 0;
+    width: 100%;
+}

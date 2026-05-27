@@ -20,64 +20,86 @@ let temperatureData = [];
 let voltageData = [];
 let powerData = [];
 
-const temperatureChart = new Chart(document.getElementById("temperatureChart"),
-{
-type: "line",
-data:{
-    labels:[],
-    datasets:[{
-        label: "Temperature (c)",
-        data: []
-    }]
-},
-options: {
-  scales: {
-    y: {
-      max: 100 ,
-      min: 0
-    }
-  }
-}
-});
-const voltageChart = new Chart(document.getElementById("voltageChart"),
-{
-type: "line",
-data:{
-    labels:[],
-    datasets:[{
-        label: "Voltage (V)",
-        data: []
-    }]
-},
-options: {
-  scales: {
-    y: {
-      max: 100 ,
-      min: 0
-    }
-  }
-}
-});
-const powerChart = new Chart(document.getElementById("powerChart"),
-{
-type: "line",
-data:{
-    labels:[],
-    datasets:[{
-        label: "Power (W)",
-        data: []
-    }]
-},
-options: {
-  scales: {
-    y: {
-      max: 100 ,
-      min: 0
-    }
-  }
-}
-});
+const temperatureChart = new Chart(
+    document.getElementById("temperatureChart"),
+    {
+        type: "line",
 
+        data: {
+            labels: [],
+            datasets: [{
+                label: "Temperature (C)",
+                data: []
+            }]
+        },
+
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+
+            scales: {
+                y: {
+                    min: 0,
+                    max: 100
+                }
+            }
+        }
+    }
+);
+
+const voltageChart = new Chart(
+    document.getElementById("voltageChart"),
+    {
+        type: "line",
+
+        data: {
+            labels: [],
+            datasets: [{
+                label: "Voltage (V)",
+                data: []
+            }]
+        },
+
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+
+            scales: {
+                y: {
+                    min: 0,
+                    max: 100
+                }
+            }
+        }
+    }
+);
+
+const powerChart = new Chart(
+    document.getElementById("powerChart"),
+    {
+        type: "line",
+
+        data: {
+            labels: [],
+            datasets: [{
+                label: "Power (W)",
+                data: []
+            }]
+        },
+
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+
+            scales: {
+                y: {
+                    min: 0,
+                    max: 100
+                }
+            }
+        }
+    }
+);
 function addPointToChart(array, value){
     array.push(value);
     if(array.length > MAX_POINTS){

@@ -8,14 +8,45 @@
 <h1>Live Data:</h1>
 <div id = "dashboard"></div>
 
-<h2>Temperature:</h2>
-<canvas id = "temperatureChart"></canvas>
+<div class="chart-container">
+  <canvas id="temperatureChart"></canvas>
+</div>
 
-<h2>Voltage:</h2>
-<canvas id = "voltageChart"></canvas>
+<div class="chart-container">
+  <canvas id="voltageChart"></canvas>
+</div>
 
-<h2>Power:</h2>
-<canvas id = "powerChart"></canvas>
+<div class="chart-container">
+  <canvas id="powerChart"></canvas>
+</div>
+
+<h2>Control Panel</h2>
+
+<div id="controlPanel">
+
+  <div class="panel-section">
+    <h3>Telemetry Rate</h3>
+    <button onclick="setTelemetryRate(1)">1 Hz</button>
+    <button onclick="setTelemetryRate(5)">5 Hz</button>
+    <button onclick="setTelemetryRate(10)">10 Hz</button>
+  </div>
+
+  <div class="panel-section">
+    <h3>Noise Level</h3>
+    <button onclick="setNoiseLevel('low')">Low</button>
+    <button onclick="setNoiseLevel('medium')">Medium</button>
+    <button onclick="setNoiseLevel('high')">High</button>
+  </div>
+
+  <div class="panel-section">
+    <h3>Scenario</h3>
+    <button onclick="setScenario('normal')">Normal</button>
+    <button onclick="setScenario('warmup')">Warmup</button>
+    <button onclick="setScenario('powerSpike')">Power Spike</button>
+    <button onclick="setScenario('triggerDropout')">Trigger Dropout</button>
+  </div>
+
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src = "app.js"></script>
