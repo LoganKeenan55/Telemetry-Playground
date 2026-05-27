@@ -7,8 +7,9 @@ h1 {
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-}
 
+    align-items: center; 
+}
 
 .top {
     width: 100%;
@@ -22,18 +23,20 @@ h1 {
 }
 
 .left-col {
-    flex: 2;
-}
-
-.right-col {
     flex: 1;
 }
 
+.right-col {
+    flex: 2;
+}
+
 .chart-container {
-    width: 500px;
+    width: 700px;
     height: 200px;
     margin-bottom: 20px;
 }
+
+
 
 #controlPanel {
     display: flex;

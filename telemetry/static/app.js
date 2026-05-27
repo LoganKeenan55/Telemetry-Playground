@@ -12,7 +12,16 @@ function updateDashboard(data) {
 
   for (const key in data) {
     const p = document.createElement("p");
-    p.textContent = `${key}: ${data[key]}`;
+    //round numbers
+    if(typeof data[key] == "number"){
+        data[key] = data[key].toFixed(2);
+        p.textContent = `${key}: ${data[key]}`;
+    }
+    else{
+        p.textContent = `${key}: ${data[key]}`;
+    }
+
+
     dashboard.appendChild(p);
   }
 }
