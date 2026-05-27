@@ -80,17 +80,23 @@ func generateTelemetryValues() Payload{
 			power += 500
 		}
 
-	//everything drops to zero
+	
 	case triggerDropout:
 
-		temperature = 0
-		voltage = 0
-		power = 0
-		hfPing = 0
-		lfPing = 0
-		triggerRate = 0
-	}
+		base := 25 + math.Cos(t)*25
 
+		temperature = 25 + math.Sin(t)*25 + (rand.Float64()*2-1)*currentNoise
+		voltage = base + (rand.Float64()*2-1)*currentNoise
+		power = base + (rand.Float64()*2-1)*currentNoise
+		hfPing = base + (rand.Float64()*2-1)*currentNoise
+		lfPing = base + (rand.Float64()*2-1)*currentNoise
+		triggerRate = base + (rand.Float64()*2-1)*currentNoise
+
+		//randomly drop ONLY triggerRate to 0
+		if rand.Float64() < 0.1 {
+			triggerRate = 0
+		}
+}
 	return Payload{
 		TemperatureC: temperature,
 		VoltageV: voltage,
