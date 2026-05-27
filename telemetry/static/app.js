@@ -1,3 +1,8 @@
+
+const statusElement = document.getElementById("connectionStatus");
+
+
+
 function updateDashboard(data) {
   //finds html element
   const dashboard = document.getElementById("dashboard");
@@ -129,6 +134,13 @@ function updateCharts(){
 
 //SSE connection
 const events = new EventSource("/events");
+
+events.onopen = function(){
+    statusElement.textContent = "Connected!";
+};
+events.onerror = function(){
+    statusElement.textContent = "Disconnected";
+};
 
 //runs everytime server sennds {data: []} from go
 events.onmessage = function (event) {
