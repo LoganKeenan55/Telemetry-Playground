@@ -33,7 +33,7 @@ data:{
 options: {
   scales: {
     y: {
-      max: 50 ,
+      max: 100 ,
       min: 0
     }
   }
@@ -52,7 +52,7 @@ data:{
 options: {
   scales: {
     y: {
-      max: 50 ,
+      max: 100 ,
       min: 0
     }
   }
@@ -71,7 +71,7 @@ data:{
 options: {
   scales: {
     y: {
-      max: 50 ,
+      max: 100 ,
       min: 0
     }
   }
