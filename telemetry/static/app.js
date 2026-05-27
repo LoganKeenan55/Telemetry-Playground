@@ -1,6 +1,8 @@
 function updateDashboard(data) {
+  //finds html element
   const dashboard = document.getElementById("dashboard");
 
+  //clear
   dashboard.innerHTML = "";
 
   for (const key in data) {
@@ -85,12 +87,12 @@ function addPointToChart(array, value){
 }
 
 
-function updateCharts(data){
+function updateCharts(){
     //x axis will just be numbers 1 -> max
     const labels = temperatureData.map((val,i) => i+1);
 
-    temperatureChart.data.labels = labels;
-    temperatureChart.data.datasets[0].data = temperatureData;
+    temperatureChart.data.labels = labels; //x
+    temperatureChart.data.datasets[0].data = temperatureData; //y
     temperatureChart.update("none");
 
     voltageChart.data.labels = labels;
@@ -106,6 +108,7 @@ function updateCharts(data){
 //SSE connection
 const events = new EventSource("/events");
 
+//runs everytime server sennds {data: []} from go
 events.onmessage = function (event) {
     const data = JSON.parse(event.data);
     updateDashboard(data);

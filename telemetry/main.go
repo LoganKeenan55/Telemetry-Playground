@@ -15,9 +15,7 @@ import (
 var filePath string = "payload.json"
 
 
-
-
-
+//browser askes, server responds, stop
 func handler(w http.ResponseWriter, r *http.Request){
 	//content = byte[], error = error
 	content, error := os.ReadFile(filePath)
@@ -40,6 +38,9 @@ func handler(w http.ResponseWriter, r *http.Request){
 	
 }
 
+//browser connects, connection stays open
+//w lets you send info back to request
+//r contains info about request
 func eventsHandler(w http.ResponseWriter, r *http.Request){
 
 	//needed SSE headers to keep connection alive
@@ -55,14 +56,14 @@ func eventsHandler(w http.ResponseWriter, r *http.Request){
 		content, error := os.ReadFile(filePath)
 
 		if error != nil{
-			http.Error(w, "File could not be read",1);
+			http.Error(w, "File could not be read",500);
 			return;
 		}
 
 		//converts JSON into payload struct
 		var payload Payload
 		if error := json.Unmarshal(content,&payload); error != nil{
-			http.Error(w,"JSON could not be parsed",1);
+			http.Error(w,"JSON could not be parsed",500);
 			return;
 		}
 
@@ -70,11 +71,12 @@ func eventsHandler(w http.ResponseWriter, r *http.Request){
 		jsonData, error := json.Marshal(payload);
 
 		if error!= nil{
-			http.Error(w, "Struct couldn't be turned into JSON",1);
+			http.Error(w, "Struct couldn't be turned into JSON",500);
 		}
 
 		fmt.Fprintf(w, "data: %s\n\n", jsonData)
 
+		//forces data out asap
 		flusher.Flush();
 
 		time.Sleep(1*time.Second);
@@ -88,7 +90,7 @@ func eventsHandler(w http.ResponseWriter, r *http.Request){
 func main() {
 	//make goroutine that runs in background
 	//generates payload every second
-
+	//lightweight thread
 	go func(){
 		for{
 			writeTelemetryToFile();
@@ -96,9 +98,11 @@ func main() {
 		}
 	}()
 
-	// /data for request/repsonse, /events for open connection
+	// "/data" for request/repsonse
+	// "/events" for open connection
 	http.HandleFunc("/events", eventsHandler)
 
+	//gets server frontend files
 	http.Handle("/", http.FileServer(http.Dir("static")))
 	
 	err := http.ListenAndServe(":8080", nil)
