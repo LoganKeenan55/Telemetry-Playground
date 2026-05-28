@@ -1,6 +1,7 @@
 Real time telemetry visualizer built with Go and a browser frontend. It generates fake sensor data and streams it to the client using SSE which is then plotted with chart.js.
 
-<img width="2879" height="1799" alt="image" src="https://github.com/user-attachments/assets/f5be6f4c-777d-4cd2-a85f-5a36db5e8e0f" />
+<img width="1899" height="913" alt="image" src="https://github.com/user-attachments/assets/6c0c6389-98df-4446-92b1-616ff944773f" />
+
 
 
 ## How to run
