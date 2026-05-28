@@ -57,8 +57,9 @@ func generateTelemetryValues() Payload{
 
 	//flat constant values
 	case warmup:
+		//rise for 30 seconds
+		temperature = math.Min(30, t) + math.Sin(t)*2
 
-		temperature = 5 + math.Sin(t)*5
 		voltage = 5 + math.Cos(t)*5
 		power = 5 + math.Cos(t)*5
 		hfPing = 1
