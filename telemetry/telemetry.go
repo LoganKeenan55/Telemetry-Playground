@@ -41,7 +41,7 @@ func generateTelemetryValues() Payload{
 	var lfPing float64
 	var triggerRate float64
 
-		switch currentConfig.Scenario {
+	switch currentConfig.Scenario {
 
 	//smooth sine wave telemetry
 	case normal:
@@ -111,6 +111,8 @@ func generateTelemetryValues() Payload{
 
 func writeTelemetryToFile(){
 	payload := generateTelemetryValues();
+	
+	//convert data to json
 	jsonData, _ := json.MarshalIndent(payload,"", " ");
 	os.WriteFile("payload.json",jsonData,0644);
 }

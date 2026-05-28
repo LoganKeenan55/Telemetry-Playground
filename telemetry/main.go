@@ -70,6 +70,7 @@ func handler(w http.ResponseWriter, r *http.Request){
 //browser connects, connection stays open
 //w lets you send info back to request
 //r contains info about request
+//reads current telemtry data, sends it to browser
 func eventsHandler(w http.ResponseWriter, r *http.Request){
 
 	//needed SSE headers to keep connection alive
@@ -103,6 +104,7 @@ func eventsHandler(w http.ResponseWriter, r *http.Request){
 			http.Error(w, "Struct couldn't be turned into JSON",500);
 		}
 
+		//sends to browser
 		fmt.Fprintf(w, "data: %s\n\n", jsonData)
 
 		//forces data out asap

@@ -166,10 +166,11 @@ events.onmessage = function (event) {
 
 
 function setTelemetryRate(newVal){
-  fetch("/config",{
-    method: "POST",
+  //http://localhost:8080/config
+    fetch("/config",{
+    method: "POST", //sending data
     headers: {
-      "Content-Type": "application/json"
+        "Content-Type": "application/json"
     },
     body: JSON.stringify({telemetryRate:newVal})
 
@@ -177,10 +178,10 @@ function setTelemetryRate(newVal){
 }
 
 function setNoiseLevel(newVal){
-  fetch("/config",{
+    fetch("/config",{
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+        "Content-Type": "application/json"
     },
     body: JSON.stringify({noiseLevel:newVal})
 
@@ -188,10 +189,10 @@ function setNoiseLevel(newVal){
 }
 
 function setScenario(newVal){
-  fetch("/config",{
+    fetch("/config",{
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+        "Content-Type": "application/json"
     },
     body: JSON.stringify({scenario:newVal})
 
