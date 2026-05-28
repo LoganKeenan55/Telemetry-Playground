@@ -1,5 +1,9 @@
 Real time telemetry visualizer built with Go and a browser frontend. It generates fake sensor data and streams it to the client using SSE which is then plotted with chart.js.
 
+<img width="1899" height="913" alt="image" src="https://github.com/user-attachments/assets/6c0c6389-98df-4446-92b1-616ff944773f" />
+
+
+
 ## How to run
 - go run .
 - http://localhost:8080
@@ -7,15 +11,16 @@ Real time telemetry visualizer built with Go and a browser frontend. It generate
 ## Features
 - Real-time telemetry stream over Server-Sent Events (SSE)
 - Configurable simulation scenarios:
-  - Normal sinusoidal telemetry
-  - Warmup (low, stable readings)
+  - Normal telemetry
+  - Warmup
   - Power spike events
   - Trigger dropout simulation
 - Adjustable noise levels (low / medium / high)
 - Live charts for temperature, voltage, and power
 - Control panel to modify system behavior at runtime
-- Pure Go backend with no external libraries
-- Vanilla JS frontend using Chart.js
+- Go backend with no external libraries
+- JS frontend using Chart.js
+- *No internet connection required*
 
 
 ## Data flow:
@@ -25,3 +30,12 @@ Real time telemetry visualizer built with Go and a browser frontend. It generate
 3. SSE endpoint (`/events`) streams updates to the browser
 4. Frontend updates DOM + charts in real time
 5. Control panel sends config updates to `/config`
+
+"Warmup Mode:"
+<img width="1899" height="915" alt="image" src="https://github.com/user-attachments/assets/2b46337f-b8f0-4015-8d47-a48ea06347a9" />
+
+"Power Spike Mode":
+<img width="2879" height="1799" alt="image" src="https://github.com/user-attachments/assets/2117960e-e168-47d2-a9d3-48b46623e1bd" />
+
+"Trigger Dropout": (similar to normal mode, but the triggerRate randomly drops to 0)
+<img width="1899" height="909" alt="image" src="https://github.com/user-attachments/assets/957e8200-ed0c-446e-aead-b9f58315e818" />
