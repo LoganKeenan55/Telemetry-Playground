@@ -2,6 +2,7 @@ h1 {
     color: red;
 }
 
+
 .page {
     display: flex;
     flex-direction: column;
@@ -56,6 +57,10 @@ h1 {
 
     margin: 5px 0;
     width: 100%;
+}
+.panel-section button:active{
+    background-color: cornflowerblue;
+    transform: translateY(1px);
 }
 
 #connectionStatus {
