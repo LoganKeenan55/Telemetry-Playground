@@ -11,10 +11,10 @@ Real time telemetry visualizer built with Go and a browser frontend. It generate
 ## Features
 - Real-time telemetry stream over Server-Sent Events (SSE)
 - Configurable simulation scenarios:
-  - Normal telemetry
+  - Normal
   - Warmup
-  - Power spike events
-  - Trigger dropout simulation
+  - Power spike
+  - Trigger dropout
 - Adjustable noise levels (low / medium / high)
 - Live charts for temperature, voltage, and power
 - Control panel to modify system behavior at runtime
