@@ -73,3 +73,17 @@ h1 {
     font-family: sans-serif;
     font-size: 14px;
 }
+
+#demo-canvas {
+    width: 800px;
+    height: 800px;
+
+    
+    background-color: chocolate;
+}
+
+#error-box{
+    color: red;
+    font-size: 18pt;
+    border: red;
+}
